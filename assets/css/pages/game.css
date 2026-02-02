@@ -20,5 +20,5 @@
   background: var(--c-panel);
 }
 .kv img{width:100%; height:auto; filter:saturate(0) contrast(1.05)}
-.sideCard{position:sticky; top: calc(var(--nav-h) + var(--s-4))}
+.sideCard{position:sticky; top: var(--s-4)}
 @media (max-width: 920px){ .sideCard{position:static} }

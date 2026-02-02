@@ -1,57 +1,5 @@
 [
   {
-    "id": "paradox",
-    "title": "PARADOX",
-    "oneLiner": "A fast, hostile run through shifting rooms.",
-    "status": "In development",
-    "release": "TBA",
-    "platforms": [
-      "Roblox",
-      "PC"
-    ],
-    "genres": [
-      "Horror",
-      "Co-op",
-      "Procedural"
-    ],
-    "tags": [
-      "horror",
-      "co-op",
-      "procedural"
-    ],
-    "banner": "assets/img/placeholders/banner.svg",
-    "square": "assets/img/placeholders/square.svg",
-    "description": "PARADOX is a tense, room-to-room survival experience built around unpredictable encounters, directional audio cues, and fast decision-making. This page is a placeholder \u2014 swap it for your real copy and media.",
-    "links": [
-      {
-        "label": "Roblox",
-        "href": "#"
-      },
-      {
-        "label": "Trailer",
-        "href": "#"
-      }
-    ],
-    "media": [
-      {
-        "src": "assets/img/placeholders/square.svg",
-        "alt": "Screenshot 1"
-      },
-      {
-        "src": "assets/img/placeholders/square.svg",
-        "alt": "Screenshot 2"
-      },
-      {
-        "src": "assets/img/placeholders/square.svg",
-        "alt": "Screenshot 3"
-      },
-      {
-        "src": "assets/img/placeholders/square.svg",
-        "alt": "Screenshot 4"
-      }
-    ]
-  },
-  {
     "id": "inbetween",
     "title": "INBETWEEN",
     "oneLiner": "Liminal exploration with something following you.",
@@ -64,13 +12,6 @@
       "Horror",
       "Exploration"
     ],
-    "tags": [
-      "liminal",
-      "exploration",
-      "atmospheric"
-    ],
-    "banner": "assets/img/placeholders/banner.svg",
-    "square": "assets/img/placeholders/square.svg",
     "description": "INBETWEEN is focused on atmosphere, readable spaces, and tight pacing. Replace this placeholder with your own description, feature bullets, and gallery images.",
     "links": [
       {
@@ -92,26 +33,5 @@
         "alt": "Render 3"
       }
     ]
-  },
-  {
-    "id": "unannounced",
-    "title": "UNANNOUNCED",
-    "oneLiner": "A placeholder slot for your next project.",
-    "status": "R&D",
-    "release": "TBA",
-    "platforms": [
-      "PC"
-    ],
-    "genres": [
-      "TBD"
-    ],
-    "tags": [
-      "experimental"
-    ],
-    "banner": "assets/img/placeholders/banner.svg",
-    "square": "assets/img/placeholders/square.svg",
-    "description": "Use this slot as a template for any future PATHWORKS project. Duplicate, change id/title, and add media.",
-    "links": [],
-    "media": []
   }
 ]

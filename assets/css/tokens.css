@@ -24,7 +24,6 @@
 
   /* sizing */
   --maxw: 1120px;
-  --nav-h: 44px;
 
   --r-sm: 10px;
   --r-md: 14px;
@@ -38,6 +37,8 @@
   --s-6: 32px;
   --s-7: 44px;
   --s-8: 64px;
+
+  --footer-h: 140px;
 
   /* effects */
   --focus: 0 0 0 2px var(--c-fg);

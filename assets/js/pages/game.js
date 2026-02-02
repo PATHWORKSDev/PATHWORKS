@@ -1,11 +1,6 @@
 import { $, el, readJson, qsParam } from "../core.js";
 import { initUi } from "../ui.js";
 
-function fmtList(arr){
-  if (!Array.isArray(arr) || arr.length === 0) return "—";
-  return arr.join(", ");
-}
-
 function resolvePath(root, path){
   if (!path) return "";
   if (path.startsWith("http")) return path;
@@ -13,18 +8,45 @@ function resolvePath(root, path){
   return `${root}${path}`;
 }
 
-function setHeroImage(url){
-  const hero = document.querySelector(".hero");
-  if (!hero) return;
-  hero.style.setProperty("--hero-image", `url('${url}')`);
+function toAbs(path){
+  if (!path) return "";
+  try{
+    return new URL(path, window.location.href).href;
+  }catch{
+    return path;
+  }
 }
 
-function buildMediaThumb(src, alt){
-  return el("div", { class: "mediaThumb" }, [
-    el("button", { type: "button", "data-open-media": "1", "data-src": src, "data-alt": alt || "Media" }, [
-      el("img", { src, alt: alt || "" })
-    ])
-  ]);
+function gameAsset(root, id, keyword, ext){
+  if (!id) return "";
+  return `${root}assets/data/games-data/${id}/${keyword}.${ext}`;
+}
+
+function setHeroBgImage(url){
+  const hero = document.querySelector(".hero");
+  if (!hero) return;
+  hero.style.setProperty("--hero-bg-image", url);
+}
+
+function setHeroTitleImage(url, alt, fallback){
+  const img = document.getElementById("gameTitleImg");
+  if (!img || !url) return;
+  img.src = url;
+  if (fallback) img.onerror = () => { img.src = fallback; };
+  if (typeof alt === "string") img.alt = alt;
+}
+
+async function loadBodyHtml(root, id){
+  const target = $("#gameBodyContainer");
+  if (!target || !id) return;
+  const path = `${root}assets/data/games-data/${id}/body.html`;
+  const res = await fetch(path, { cache: "no-store" });
+  if (!res.ok){
+    target.innerHTML = "<p>Missing game body content.</p>";
+    return;
+  }
+  const html = await res.text();
+  target.innerHTML = html;
 }
 
 async function main(){
@@ -37,11 +59,9 @@ async function main(){
 
   if (!game){
     document.title = `Game not found — PATHWORKS`;
-    $("#kicker")?.replaceChildren(document.createTextNode("Game"));
     $("#gameTitle")?.replaceChildren(document.createTextNode("Game not found"));
-    $("#gameSub")?.replaceChildren(document.createTextNode(""));
 
-    const body = $("#gameBody");
+    const body = $("#gameBodyContainer");
     if (body){
       body.innerHTML = "";
       body.appendChild(el("p", {}, ["Missing or invalid game id."]));
@@ -50,58 +70,41 @@ async function main(){
     return;
   }
 
-  document.title = `${game.title} — PATHWORKS`;
+  document.title = `PATHWORKS - ${game.title}`;
 
-  const banner = resolvePath(root, game.banner);
-  if (banner) setHeroImage(banner);
+  const fallbackBanner = toAbs(`${root}assets/img/placeholders/banner.jpg`);
+  const banner = game.banner
+    ? resolvePath(root, game.banner)
+    : gameAsset(root, game.id, "banner", "png");
+  const bannerJpg = gameAsset(root, game.id, "banner", "jpg");
+  const bannerPngAbs = toAbs(banner);
+  const bannerJpgAbs = toAbs(bannerJpg);
+  if (banner) setHeroBgImage(`url('${bannerPngAbs}'), url('${bannerJpgAbs}'), url('${fallbackBanner}')`);
+  const titleImage = game.titleImage
+    ? resolvePath(root, game.titleImage)
+    : gameAsset(root, game.id, "title", "png");
+  const fallbackTitle = `${root}assets/img/placeholders/title.png`;
+  setHeroTitleImage(titleImage || fallbackTitle, game.title || "Game", fallbackTitle);
 
-  $("#kicker")?.replaceChildren(document.createTextNode(game.status || "Game"));
   $("#gameTitle")?.replaceChildren(document.createTextNode(game.title || "Untitled Game"));
-  $("#gameSub")?.replaceChildren(document.createTextNode(game.oneLiner || ""));
-
-  const chips = $("#heroChips");
-  if (chips){
-    chips.innerHTML = "";
-    for (const c of [
-      ...(Array.isArray(game.platforms) ? game.platforms.map(p => ({ label: p })) : []),
-      ...(Array.isArray(game.tags) ? game.tags.slice(0,4).map(t => ({ label: t })) : []),
-    ]){
-      chips.appendChild(el("span", { class: "chip" }, [c.label]));
-    }
-  }
-
-  $("#gameLongDesc")?.replaceChildren(document.createTextNode(game.description || "—"));
-  $("#kvPlatforms")?.replaceChildren(document.createTextNode(fmtList(game.platforms)));
-  $("#kvStatus")?.replaceChildren(document.createTextNode(game.status || "—"));
-  $("#kvRelease")?.replaceChildren(document.createTextNode(game.release || "—"));
-  $("#kvGenre")?.replaceChildren(document.createTextNode(fmtList(game.genres)));
-
-  const links = $("#kvLinks");
-  if (links){
-    links.innerHTML = "";
-    if (!Array.isArray(game.links) || game.links.length === 0){
-      links.textContent = "—";
-    }else{
-      for (const l of game.links){
-        if (!l?.href) continue;
-        links.appendChild(el("a", { class: "btn btn--sm", href: l.href, target: "_blank", rel: "noreferrer" }, [l.label || "Link"]));
-      }
-    }
-  }
-
-  const gallery = $("#mediaGrid");
-  if (gallery){
-    gallery.innerHTML = "";
-    if (Array.isArray(game.media)){
-      for (const m of game.media.slice(0, 12)){
-        const src = resolvePath(root, m?.src);
-        if (src) gallery.appendChild(buildMediaThumb(src, m.alt));
-      }
-    }
-  }
+  await loadBodyHtml(root, game.id);
 
   // re-bind for dynamically created media buttons
   initUi();
+
+  const dock = document.querySelector(".pageDock");
+  const backTopBtn = document.getElementById("backTopBtn");
+  const onScroll = () => {
+    if (!dock) return;
+    const atTop = window.scrollY <= 10;
+    dock.dataset.top = atTop ? "1" : "0";
+    if (backTopBtn) backTopBtn.setAttribute("aria-hidden", atTop ? "true" : "false");
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  if (backTopBtn){
+    backTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  }
 }
 
 main().catch((err) => {

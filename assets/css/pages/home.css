@@ -1,20 +1,19 @@
 /* Home page specific */
-.filtersRow{
-  margin-top: var(--s-5);
-  display:flex;
-  flex-wrap:wrap;
-  gap: 10px;
-  align-items:center;
+.sectionHeader--center{
+  justify-content:center;
+  text-align:center;
 }
-.searchWrap{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  flex: 1 1 320px;
+.sectionHeader--center > h2{
+  width:100%;
 }
-.searchWrap .input{max-width: 520px}
-.tagRow{
-  display:flex;
-  flex-wrap:wrap;
-  gap: 8px;
+.gamesList{
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+}
+.gamesList .gameCard{
+  min-height: 260px;
+}
+.gamesList .gameCard::before{
+  filter: saturate(0) contrast(1.05) brightness(0.6);
+  opacity:0.9;
 }
