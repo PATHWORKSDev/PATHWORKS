@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>PATHWORKS — Game</title>
+
+  <link rel="icon" href="../assets/img/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/tokens.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/ui.css" />
+  <link rel="stylesheet" href="../assets/css/pages/game.css" />
+
+</head>
+
+<body data-root="../">
+
+
+<header class="nav">
+  <div class="container navInner">
+    <a class="brand" href="../index.html">
+      <span class="brandMark" aria-hidden="true"></span>
+      <span>PATHWORKS</span>
+    </a>
+
+    <nav class="navLinks" aria-label="Primary">
+      <a class="navLink" href="../index.html">Our games</a>
+      <a class="navLink" href="../pages/studio.html">Studio</a>
+      <a class="navLink" href="../pages/press.html">Press</a>
+      <a class="navLink" href="../pages/template.html">Library</a>
+    </nav>
+
+    <div class="navActions">
+      <button id="navMobileBtn" class="iconBtn navMobileBtn" type="button" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="drawerMask" class="drawerMask" data-open="0" aria-hidden="true"></div>
+<aside id="drawer" class="drawer" data-open="0" aria-label="Mobile menu">
+  <div class="drawerHeader">
+    <span class="brand"><span class="brandMark" aria-hidden="true"></span><span>PATHWORKS</span></span>
+    <button id="drawerClose" class="iconBtn" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M6 6l12 12M18 6l-12 12"/>
+      </svg>
+    </button>
+  </div>
+  <div class="drawerBody">
+    <nav class="drawerLinks" aria-label="Primary (mobile)">
+      <a class="navLink" href="../index.html">Our games</a>
+      <a class="navLink" href="../pages/studio.html">Studio</a>
+      <a class="navLink" href="../pages/press.html">Press</a>
+      <a class="navLink" href="../pages/template.html">Library</a>
+    </nav>
+  </div>
+</aside>
+
+
+<main>
+  <section class="hero" style="--hero-image: url('../assets/img/placeholders/banner.svg')">
+    <div class="container heroInner">
+      <div id="kicker" class="kicker">Game</div>
+      <h1 id="gameTitle" class="heroTitle">Loading…</h1>
+      <p id="gameSub" class="heroSub"></p>
+      <div id="heroChips" class="heroMetaRow"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div id="fatalError" class="mono" style="margin-bottom: var(--s-4); color: rgba(255,255,255,0.75)"></div>
+
+      <div class="kvRow">
+        <div id="gameBody">
+          <h2>Overview</h2>
+          <p id="gameLongDesc"></p>
+
+          <div class="tabs" style="margin-top: var(--s-6)">
+            <div class="tabBar" role="tablist" aria-label="Game tabs">
+              <button class="tabBtn" type="button" role="tab" aria-selected="true" data-tab="media">Media</button>
+              <button class="tabBtn" type="button" role="tab" aria-selected="false" data-tab="features">Features</button>
+              <button class="tabBtn" type="button" role="tab" aria-selected="false" data-tab="dev">Devlog</button>
+            </div>
+
+            <div class="tabPanel" role="tabpanel" data-panel="media">
+              <div id="mediaGrid" class="mediaGrid"></div>
+              <p style="margin-top: var(--s-4)">Click any thumbnail to open the modal viewer.</p>
+            </div>
+
+            <div class="tabPanel hidden" role="tabpanel" data-panel="features">
+              <div class="grid" style="grid-template-columns: 1fr; gap: var(--s-3)">
+                <details class="accordion">
+                  <summary>Core loop <span class="accordionChevron" aria-hidden="true">+</span></summary>
+                  <div class="accordionBody">
+                    <p>Describe the minute-to-minute loop, win/fail states, and what makes the game replayable.</p>
+                  </div>
+                </details>
+
+                <details class="accordion">
+                  <summary>Content <span class="accordionChevron" aria-hidden="true">+</span></summary>
+                  <div class="accordionBody">
+                    <p>Rooms, levels, missions, bosses, items, modifiers, etc.</p>
+                  </div>
+                </details>
+
+                <details class="accordion">
+                  <summary>Accessibility <span class="accordionChevron" aria-hidden="true">+</span></summary>
+                  <div class="accordionBody">
+                    <p>Input remapping, UI motion reduction, contrast, subtitles, audio cues, etc.</p>
+                  </div>
+                </details>
+              </div>
+            </div>
+
+            <div class="tabPanel hidden" role="tabpanel" data-panel="dev">
+              <p>Use this tab for patch notes or a short devlog list.</p>
+              <div class="card" style="margin-top: var(--s-4)">
+                <div class="cardInner">
+                  <div class="cardTitle">Changelog entry</div>
+                  <div class="cardSub">YYYY-MM-DD</div>
+                  <p style="margin-top: var(--s-3)">Bullet list of changes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card sideCard">
+          <div class="cardInner">
+            <div class="cardTitle">Quick facts</div>
+            <div class="cardSub" style="margin-top:6px">Autofilled from JSON.</div>
+
+            <div style="margin-top: var(--s-4); display:grid; gap: 10px">
+              <div class="cardRow">
+                <div class="cardSub">Platforms</div>
+                <div id="kvPlatforms" class="mono" style="color: var(--c-muted); text-align:right"></div>
+              </div>
+              <div class="cardRow">
+                <div class="cardSub">Status</div>
+                <div id="kvStatus" class="mono" style="color: var(--c-muted); text-align:right"></div>
+              </div>
+              <div class="cardRow">
+                <div class="cardSub">Release</div>
+                <div id="kvRelease" class="mono" style="color: var(--c-muted); text-align:right"></div>
+              </div>
+              <div class="cardRow">
+                <div class="cardSub">Genre</div>
+                <div id="kvGenre" class="mono" style="color: var(--c-muted); text-align:right"></div>
+              </div>
+            </div>
+
+            <div style="margin-top: var(--s-5)">
+              <div class="cardSub">Links</div>
+              <div id="kvLinks" class="cardActions" style="margin-top: var(--s-3)"></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+
+<footer class="footer">
+  <div class="container footerInner">
+    <div>
+      <div class="brand"><span class="brandMark" aria-hidden="true"></span><span>PATHWORKS</span></div>
+      <div class="footerSmall" style="margin-top:10px">
+        Dark-mode only, monochrome kit. Replace placeholder links + images in <code>assets/</code>.
+      </div>
+      <div class="footerSmall" style="margin-top:10px">
+        © <span id="year"></span> PATHWORKS
+      </div>
+    </div>
+
+    <div>
+      <div class="footerSmall" style="margin-bottom:10px">Social</div>
+      <div class="footerLinks">
+        <a href="#" target="_blank" rel="noreferrer">Discord</a>
+        <a href="#" target="_blank" rel="noreferrer">YouTube</a>
+        <a href="#" target="_blank" rel="noreferrer">X / Twitter</a>
+        <a href="#" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<dialog id="mediaDialog" aria-label="Media viewer">
+  <div class="modalHeader">
+    <div id="mediaDialogTitle" class="mono">Media</div>
+    <button id="mediaDialogClose" class="btn btn--sm modalClose" type="button">Close</button>
+  </div>
+  <div class="modalBody">
+    <div class="modalMedia">
+      <img id="mediaDialogImg" alt="" />
+    </div>
+  </div>
+</dialog>
+
+<script>
+  document.getElementById("year").textContent = String(new Date().getFullYear());
+</script>
+
+
+<script type="module">
+  // Tabs behavior kept inline so this page stays copyable as a template
+  const btns = Array.from(document.querySelectorAll(".tabBtn"));
+  const panels = Array.from(document.querySelectorAll(".tabPanel"));
+  const set = (name) => {
+    for (const b of btns) b.setAttribute("aria-selected", b.dataset.tab === name ? "true" : "false");
+    for (const p of panels) p.classList.toggle("hidden", p.dataset.panel !== name);
+  };
+  for (const b of btns) b.addEventListener("click", () => set(b.dataset.tab));
+</script>
+<script type="module" src="../assets/js/pages/game.js"></script>
+</body>
+</html>

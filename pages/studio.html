@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>PATHWORKS — Studio</title>
+
+  <link rel="icon" href="../assets/img/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/tokens.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/ui.css" />
+  <link rel="stylesheet" href="../assets/css/pages/studio.css" />
+
+</head>
+
+<body data-root="../">
+
+
+<header class="nav">
+  <div class="container navInner">
+    <a class="brand" href="../index.html">
+      <span class="brandMark" aria-hidden="true"></span>
+      <span>PATHWORKS</span>
+    </a>
+
+    <nav class="navLinks" aria-label="Primary">
+      <a class="navLink" href="../index.html">Our games</a>
+      <a class="navLink" href="../pages/studio.html">Studio</a>
+      <a class="navLink" href="../pages/press.html">Press</a>
+      <a class="navLink" href="../pages/template.html">Library</a>
+    </nav>
+
+    <div class="navActions">
+      <button id="navMobileBtn" class="iconBtn navMobileBtn" type="button" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="drawerMask" class="drawerMask" data-open="0" aria-hidden="true"></div>
+<aside id="drawer" class="drawer" data-open="0" aria-label="Mobile menu">
+  <div class="drawerHeader">
+    <span class="brand"><span class="brandMark" aria-hidden="true"></span><span>PATHWORKS</span></span>
+    <button id="drawerClose" class="iconBtn" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M6 6l12 12M18 6l-12 12"/>
+      </svg>
+    </button>
+  </div>
+  <div class="drawerBody">
+    <nav class="drawerLinks" aria-label="Primary (mobile)">
+      <a class="navLink" href="../index.html">Our games</a>
+      <a class="navLink" href="../pages/studio.html">Studio</a>
+      <a class="navLink" href="../pages/press.html">Press</a>
+      <a class="navLink" href="../pages/template.html">Library</a>
+    </nav>
+  </div>
+</aside>
+
+
+<main>
+  <section class="hero" style="--hero-image: url('../assets/img/placeholders/banner.svg')">
+    <div class="container heroInner">
+      <div class="kicker">Studio</div>
+      <h1 class="heroTitle">About PATHWORKS</h1>
+      <p class="heroSub">A template page for studio info, hiring, values, and a quick contact surface.</p>
+      <div class="heroMetaRow">
+        <span class="chip">Monochrome kit</span>
+        <span class="chip">Reusable components</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container twoCol">
+      <div>
+        <h2>What we build</h2>
+        <p>
+          Replace this text with the studio mission. Keep it short and readable. If you want the same vibe as your portfolio:
+          hero banner on top, then a clean body section, then footer.
+        </p>
+
+        <div class="grid" style="grid-template-columns: 1fr; gap: var(--s-3); margin-top: var(--s-5)">
+          <details class="accordion">
+            <summary>Design pillars <span class="accordionChevron" aria-hidden="true">+</span></summary>
+            <div class="accordionBody">
+              <p>List 3–5 pillars, each with a single sentence.</p>
+            </div>
+          </details>
+
+          <details class="accordion">
+            <summary>Tech stack <span class="accordionChevron" aria-hidden="true">+</span></summary>
+            <div class="accordionBody">
+              <p>Tools, engines, pipeline notes. Keep it factual.</p>
+            </div>
+          </details>
+
+          <details class="accordion">
+            <summary>Collaboration <span class="accordionChevron" aria-hidden="true">+</span></summary>
+            <div class="accordionBody">
+              <p>How you handle contributions, credits, and asset ownership.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cardInner">
+          <div class="cardTitle">Contact</div>
+          <div class="cardSub" style="margin-top:6px">Simple, low-friction contact block.</div>
+
+          <div style="margin-top: var(--s-4); display:grid; gap: 10px">
+            <label>
+              <div class="cardSub">Name</div>
+              <input class="input" placeholder="Your name" />
+            </label>
+            <label>
+              <div class="cardSub">Email</div>
+              <input class="input" placeholder="name@example.com" />
+            </label>
+            <label>
+              <div class="cardSub">Message</div>
+              <textarea class="textarea" placeholder="What are you reaching out about?"></textarea>
+            </label>
+          </div>
+
+          <div style="margin-top: var(--s-4); display:flex; gap: 10px; flex-wrap:wrap">
+            <button class="btn btn--primary" type="button">Send (wire later)</button>
+            <a class="btn" href="press.html">Press kit</a>
+          </div>
+
+          <p style="margin-top: var(--s-4)"><small>For static hosting, wire this to a form backend later (or mailto).</small></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+
+<footer class="footer">
+  <div class="container footerInner">
+    <div>
+      <div class="brand"><span class="brandMark" aria-hidden="true"></span><span>PATHWORKS</span></div>
+      <div class="footerSmall" style="margin-top:10px">
+        Dark-mode only, monochrome kit. Replace placeholder links + images in <code>assets/</code>.
+      </div>
+      <div class="footerSmall" style="margin-top:10px">
+        © <span id="year"></span> PATHWORKS
+      </div>
+    </div>
+
+    <div>
+      <div class="footerSmall" style="margin-bottom:10px">Social</div>
+      <div class="footerLinks">
+        <a href="#" target="_blank" rel="noreferrer">Discord</a>
+        <a href="#" target="_blank" rel="noreferrer">YouTube</a>
+        <a href="#" target="_blank" rel="noreferrer">X / Twitter</a>
+        <a href="#" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<dialog id="mediaDialog" aria-label="Media viewer">
+  <div class="modalHeader">
+    <div id="mediaDialogTitle" class="mono">Media</div>
+    <button id="mediaDialogClose" class="btn btn--sm modalClose" type="button">Close</button>
+  </div>
+  <div class="modalBody">
+    <div class="modalMedia">
+      <img id="mediaDialogImg" alt="" />
+    </div>
+  </div>
+</dialog>
+
+<script>
+  document.getElementById("year").textContent = String(new Date().getFullYear());
+</script>
+
+
+<script type="module">
+  import { initUi } from "../assets/js/ui.js";
+  initUi();
+</script>
+</body>
+</html>

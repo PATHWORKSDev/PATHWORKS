@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+  <defs>
+    <pattern id="p" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M0 48V0H48" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="900" fill="#000"/>
+  <rect width="900" height="900" fill="url(#p)"/>
+  <rect x="90" y="90" width="720" height="720" rx="44" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-opacity="0.14"/>
+  <path d="M280 450h340" stroke="#ffffff" stroke-opacity="0.28" stroke-width="3" stroke-linecap="round"/>
+  <path d="M450 280v340" stroke="#ffffff" stroke-opacity="0.28" stroke-width="3" stroke-linecap="round"/>
+  <rect x="362" y="362" width="176" height="176" rx="26" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-opacity="0.18"/>
+  <text x="120" y="140" font-family="ui-monospace,SFMono-Regular,Consolas,monospace" font-size="18" fill="#fff" fill-opacity="0.62" letter-spacing="3">SQUARE PLACEHOLDER</text>
+</svg>

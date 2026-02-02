@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="260" viewBox="0 0 1400 260">
+  <rect width="1400" height="260" rx="44" fill="#000"/>
+  <g transform="translate(92 70)">
+    <rect x="0" y="0" width="120" height="120" rx="28" fill="none" stroke="#fff" stroke-opacity="0.18" stroke-width="6"/>
+    <rect x="38" y="38" width="44" height="44" rx="12" fill="#fff" fill-opacity="0.92"/>
+  </g>
+  <text x="250" y="152" font-family="ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial" font-size="92" fill="#fff" fill-opacity="0.92" letter-spacing="10">PATHWORKS</text>
+</svg>

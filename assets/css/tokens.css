@@ -1,0 +1,48 @@
+/* PATHWORKS Monochrome Tokens (dark-mode only) */
+:root{
+  color-scheme: dark;
+
+  /* colors */
+  --c-bg: #000;
+  --c-fg: #fff;
+  --c-muted: rgba(255,255,255,0.78);
+  --c-dim: rgba(255,255,255,0.62);
+  --c-faint: rgba(255,255,255,0.44);
+
+  --c-border: rgba(255,255,255,0.14);
+  --c-border-strong: rgba(255,255,255,0.22);
+
+  --c-panel: rgba(255,255,255,0.04);
+  --c-panel-2: rgba(255,255,255,0.06);
+  --c-panel-3: rgba(255,255,255,0.09);
+
+  --c-shadow: rgba(0,0,0,0.72);
+
+  /* typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* sizing */
+  --maxw: 1120px;
+  --nav-h: 44px;
+
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 18px;
+
+  --s-1: 6px;
+  --s-2: 10px;
+  --s-3: 14px;
+  --s-4: 18px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 44px;
+  --s-8: 64px;
+
+  /* effects */
+  --focus: 0 0 0 2px var(--c-fg);
+  --shadow-1: 0 12px 36px rgba(0,0,0,0.55);
+  --shadow-2: 0 22px 54px rgba(0,0,0,0.7);
+
+  --ease: cubic-bezier(.2,.9,.2,1);
+}

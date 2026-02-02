@@ -1,0 +1,20 @@
+/* Home page specific */
+.filtersRow{
+  margin-top: var(--s-5);
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+  align-items:center;
+}
+.searchWrap{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex: 1 1 320px;
+}
+.searchWrap .input{max-width: 520px}
+.tagRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+}

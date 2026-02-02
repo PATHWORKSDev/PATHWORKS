@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>PATHWORKS — Library</title>
+
+  <link rel="icon" href="../assets/img/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/tokens.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/ui.css" />
+
+</head>
+
+<body data-root="../">
+
+
+<header class="nav">
+  <div class="container navInner">
+    <a class="brand" href="../index.html">
+      <span class="brandMark" aria-hidden="true"></span>
+      <span>PATHWORKS</span>
+    </a>
+
+    <nav class="navLinks" aria-label="Primary">
+      <a class="navLink" href="../index.html">Our games</a>
+      <a class="navLink" href="../pages/studio.html">Studio</a>
+      <a class="navLink" href="../pages/press.html">Press</a>
+      <a class="navLink" href="../pages/template.html">Library</a>
+    </nav>
+
+    <div class="navActions">
+      <button id="navMobileBtn" class="iconBtn navMobileBtn" type="button" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="drawerMask" class="drawerMask" data-open="0" aria-hidden="true"></div>
+<aside id="drawer" class="drawer" data-open="0" aria-label="Mobile menu">
+  <div class="drawerHeader">
+    <span class="brand"><span class="brandMark" aria-hidden="true"></span><span>PATHWORKS</span></span>
+    <button id="drawerClose" class="iconBtn" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M6 6l12 12M18 6l-12 12"/>
+      </svg>
+    </button>
+  </div>
+  <div class="drawerBody">
+    <nav class="drawerLinks" aria-label="Primary (mobile)">
+      <a class="navLink" href="../index.html">Our games</a>
+      <a class="navLink" href="../pages/studio.html">Studio</a>
+      <a class="navLink" href="../pages/press.html">Press</a>
+      <a class="navLink" href="../pages/template.html">Library</a>
+    </nav>
+  </div>
+</aside>
+
+
+<main>
+  <section class="hero" style="--hero-image: url('../assets/img/placeholders/banner.svg')">
+    <div class="container heroInner">
+      <div class="kicker">Library</div>
+      <h1 class="heroTitle">UI kit + templates</h1>
+      <p class="heroSub">
+        This page is the living reference for your site: components, examples, and conventions. Duplicate this file to create new pages.
+      </p>
+      <div class="heroMetaRow">
+        <span class="chip">Buttons</span>
+        <span class="chip">Cards</span>
+        <span class="chip">Scroll rails</span>
+        <span class="chip">Tabs</span>
+        <span class="chip">Accordions</span>
+        <span class="chip">Modals</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <h2 id="components">Components</h2>
+      <p>Everything here is monochrome and dark-mode only. Use <code>assets/css/ui.css</code> as the single source of truth.</p>
+
+      <div class="card" style="margin-top: var(--s-4)">
+        <div class="cardInner">
+          <div class="cardTitle">Buttons</div>
+          <div class="cardSub" style="margin-top:6px">Primary, default, ghost.</div>
+          <div class="cardActions" style="margin-top: var(--s-4)">
+            <button class="btn btn--primary" type="button">Primary</button>
+            <button class="btn" type="button">Default</button>
+            <button class="btn btn--ghost" type="button">Ghost</button>
+            <a class="btn btn--sm" href="#assets">Link</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--s-4); margin-top: var(--s-4)">
+        <div class="card">
+          <div class="cardInner">
+            <div class="cardTitle">Card</div>
+            <div class="cardSub" style="margin-top:6px">Generic container.</div>
+            <p style="margin-top: var(--s-3)">
+              Use cards for settings blocks, lists, and sidebars. Keep them simple.
+            </p>
+            <div class="cardActions">
+              <button class="btn btn--sm" type="button">Action</button>
+              <button class="btn btn--sm btn--ghost" type="button">Secondary</button>
+            </div>
+          </div>
+        </div>
+
+        <a class="card gameCard" href="game.html?id=paradox" style="--card-image: url('../assets/img/placeholders/banner.svg')">
+          <div class="gameCardBody">
+            <div>
+              <div class="gameCardTitle">Game card</div>
+              <div class="cardSub">Banner background + gradient overlay.</div>
+            </div>
+            <div class="gameCardMeta">
+              <span class="badge badge--solid">In development</span>
+              <span class="badge">horror</span>
+              <span class="badge">co-op</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="scrollRail" style="margin-top: var(--s-7)">
+        <div class="scrollRailHeader">
+          <div>
+            <div class="cardTitle">Scroll rail</div>
+            <div class="cardSub">Great for screenshots, updates, featured posts.</div>
+          </div>
+          <button class="btn btn--sm" type="button">Optional action</button>
+        </div>
+
+        <div class="scrollFade scrollFade--l"></div>
+        <div class="scrollFade scrollFade--r"></div>
+
+        <div class="scrollRailViewport">
+          <div class="card railItem"><div class="cardInner"><div class="cardTitle">Item 1</div><p>Snap aligned.</p></div></div>
+          <div class="card railItem"><div class="cardInner"><div class="cardTitle">Item 2</div><p>Scroll fades update automatically.</p></div></div>
+          <div class="card railItem"><div class="cardInner"><div class="cardTitle">Item 3</div><p>Custom scrollbar (webkit + firefox).</p></div></div>
+          <div class="card railItem"><div class="cardInner"><div class="cardTitle">Item 4</div><p>Keep items 260–320px wide.</p></div></div>
+        </div>
+      </div>
+
+      <div class="tabs" style="margin-top: var(--s-7)">
+        <div class="tabBar" role="tablist" aria-label="Library tabs">
+          <button class="tabBtn" type="button" role="tab" aria-selected="true" data-tab="a">Tabs</button>
+          <button class="tabBtn" type="button" role="tab" aria-selected="false" data-tab="b">Inputs</button>
+          <button class="tabBtn" type="button" role="tab" aria-selected="false" data-tab="c">Accordions</button>
+        </div>
+
+        <div class="tabPanel" role="tabpanel" data-panel="a">
+          <p>Tabs are minimal: use for dense pages like a game detail page.</p>
+        </div>
+
+        <div class="tabPanel hidden" role="tabpanel" data-panel="b">
+          <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--s-4)">
+            <label>
+              <div class="cardSub">Search</div>
+              <input class="input" placeholder="Search..." />
+            </label>
+            <label>
+              <div class="cardSub">Select</div>
+              <select class="select">
+                <option>Option A</option>
+                <option>Option B</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="tabPanel hidden" role="tabpanel" data-panel="c">
+          <details class="accordion">
+            <summary>Accordion item <span class="accordionChevron" aria-hidden="true">+</span></summary>
+            <div class="accordionBody">
+              <p>Use native <code>&lt;details&gt;</code> so it stays simple and accessible.</p>
+            </div>
+          </details>
+          <details class="accordion">
+            <summary>Another item <span class="accordionChevron" aria-hidden="true">+</span></summary>
+            <div class="accordionBody">
+              <p>Accordions are good for FAQs, patch notes, guidelines.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <h2 id="assets" style="margin-top: var(--s-8)">Asset conventions</h2>
+      <p>
+        Put studio-level assets in <code>assets/img/brand/</code>.
+        For game assets: <code>assets/img/games/&lt;id&gt;/</code>.
+      </p>
+
+      <div class="grid" style="grid-template-columns: repeat(3, minmax(0,1fr)); gap: var(--s-4); margin-top: var(--s-4)">
+        <div class="card">
+          <div class="cardInner">
+            <div class="cardTitle">Banner</div>
+            <div class="cardSub" style="margin-top:6px">Wide hero or card background.</div>
+            <div class="kv" style="margin-top: var(--s-3)">
+              <img src="../assets/img/placeholders/banner.svg" alt="Banner placeholder" />
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardInner">
+            <div class="cardTitle">Square</div>
+            <div class="cardSub" style="margin-top:6px">Tile, avatar, store icon.</div>
+            <div class="kv" style="margin-top: var(--s-3)">
+              <img src="../assets/img/placeholders/square.svg" alt="Square placeholder" />
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cardInner">
+            <div class="cardTitle">Transparent</div>
+            <div class="cardSub" style="margin-top:6px">PNG/SVG logo overlay.</div>
+            <div class="kv" style="margin-top: var(--s-3)">
+              <img src="../assets/img/placeholders/transparent.svg" alt="Transparent placeholder" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="data" style="margin-top: var(--s-8)">Data-driven games</h2>
+      <p>
+        The home page and game pages are driven by <code>assets/data/games.json</code>.
+        Every game has a stable <code>id</code> used for linking and asset folders.
+      </p>
+
+      <div class="card" style="margin-top: var(--s-4)">
+        <div class="cardInner">
+          <div class="cardTitle">Minimal game entry</div>
+          <pre class="mono" style="white-space:pre-wrap; margin:0; color: rgba(255,255,255,0.78); line-height:1.5; border:1px solid var(--c-border); border-radius: var(--r-md); padding: var(--s-4); background: rgba(0,0,0,0.4)">
+{
+  "id": "my-game",
+  "title": "MY GAME",
+  "oneLiner": "one sentence hook",
+  "status": "In development",
+  "tags": ["horror","co-op"],
+  "banner": "assets/img/games/my-game/banner.jpg",
+  "media": [
+    { "src": "assets/img/games/my-game/shot-01.jpg", "alt": "Screenshot 1" }
+  ]
+}
+          </pre>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+
+<footer class="footer">
+  <div class="container footerInner">
+    <div>
+      <div class="brand"><span class="brandMark" aria-hidden="true"></span><span>PATHWORKS</span></div>
+      <div class="footerSmall" style="margin-top:10px">
+        Dark-mode only, monochrome kit. Replace placeholder links + images in <code>assets/</code>.
+      </div>
+      <div class="footerSmall" style="margin-top:10px">
+        © <span id="year"></span> PATHWORKS
+      </div>
+    </div>
+
+    <div>
+      <div class="footerSmall" style="margin-bottom:10px">Social</div>
+      <div class="footerLinks">
+        <a href="#" target="_blank" rel="noreferrer">Discord</a>
+        <a href="#" target="_blank" rel="noreferrer">YouTube</a>
+        <a href="#" target="_blank" rel="noreferrer">X / Twitter</a>
+        <a href="#" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<dialog id="mediaDialog" aria-label="Media viewer">
+  <div class="modalHeader">
+    <div id="mediaDialogTitle" class="mono">Media</div>
+    <button id="mediaDialogClose" class="btn btn--sm modalClose" type="button">Close</button>
+  </div>
+  <div class="modalBody">
+    <div class="modalMedia">
+      <img id="mediaDialogImg" alt="" />
+    </div>
+  </div>
+</dialog>
+
+<script>
+  document.getElementById("year").textContent = String(new Date().getFullYear());
+</script>
+
+
+<script type="module">
+  import { initUi } from "../assets/js/ui.js";
+  initUi();
+
+  const btns = Array.from(document.querySelectorAll(".tabBtn"));
+  const panels = Array.from(document.querySelectorAll(".tabPanel"));
+  const set = (name) => {
+    for (const b of btns) b.setAttribute("aria-selected", b.dataset.tab === name ? "true" : "false");
+    for (const p of panels) p.classList.toggle("hidden", p.dataset.panel !== name);
+  };
+  for (const b of btns) b.addEventListener("click", () => set(b.dataset.tab));
+</script>
+</body>
+</html>
