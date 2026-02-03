@@ -1,4 +1,9 @@
 /* PATHWORKS UI Library */
+@property --pw-edge-soft{
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
 .brand{
   display:flex; align-items:center; gap:10px;
   font-weight:700; letter-spacing:0.12em;
@@ -35,36 +40,80 @@
   position:relative;
   padding: var(--s-8) 0 var(--s-7) 0;
   min-height: 360px;
-  background: #000;
+  background: #000000;
   overflow:hidden;
 }
-.hero::before{
-  content:"";
-  position:absolute; inset:-2px;
+.heroBgWrap{
+  position:absolute;
+  inset:-2px;
   z-index:0;
-  background-image: var(--hero-bg-image, none);
-  background-size: cover;
-  background-position: center;
-  filter: saturate(0) contrast(1.05) brightness(0.6);
-  opacity:0.65;
-  transform: scale(1.06);
+  pointer-events:none;
+  overflow:hidden;
+  --pw-edge-soft: 24%;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 var(--pw-edge-soft), #000 calc(100% - var(--pw-edge-soft)), transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 var(--pw-edge-soft), #000 calc(100% - var(--pw-edge-soft)), transparent 100%);
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 var(--pw-edge-soft), #000 calc(100% - var(--pw-edge-soft)), transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 var(--pw-edge-soft), #000 calc(100% - var(--pw-edge-soft)), transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
 }
-.hero::after{
-  content:"";
-  position:absolute; inset:0;
+.heroBgImg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: var(--hero-bg-x, 50%) var(--hero-bg-y, 50%);
+  filter: contrast(var(--hero-contrast, 1.05)) saturate(var(--hero-saturation, 1)) brightness(var(--hero-brightness, 0.6));
+  opacity: var(--hero-opacity, 0.65);
+  transform: scale(1.06);
+  transition: transform 500ms var(--ease), filter 500ms var(--ease), opacity 500ms var(--ease);
   z-index:0;
+}
+body[data-page="game"] .heroBgImg{
+  filter: contrast(var(--hero-contrast, 1.05)) saturate(var(--hero-saturation, 1)) brightness(var(--hero-brightness, 1.25));
+  opacity: var(--hero-opacity, 1);
+}
+.heroBgOverlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
   background:
     radial-gradient(1200px 520px at 25% 20%, rgba(255,255,255,0.10), transparent 55%),
     linear-gradient(to bottom, rgba(0,0,0,0.10), rgba(0,0,0,0.86) 62%, rgba(0,0,0,1));
 }
+.hero::before{content:none}
+.hero::after{content:none}
 .heroInner{
   position:relative;
   display:grid;
   gap:var(--s-3);
   place-items:center;
   text-align:center;
-  z-index:1;
+  z-index:2;
   padding-top: var(--s-5);
+}
+
+body.is-transitioning .heroBgOverlay,
+body.is-transitioning .gameCardBgOverlay{
+  background:
+    radial-gradient(1200px 520px at 25% 20%, rgba(255,255,255,0.10), transparent 55%),
+    linear-gradient(to bottom, rgba(0,0,0,0.10), rgba(0,0,0,0.86) 62%, rgba(0,0,0,1));
+}
+body.is-transitioning .heroBgImg,
+body.is-transitioning .gameCardBg{
+  transform: scale(1.06);
+  filter: contrast(1.05) brightness(0.6);
+  opacity:0.65;
 }
 .kicker{
   font-size:12px;
@@ -74,11 +123,15 @@
 }
 .heroTitle{margin-top:2px}
 .heroTitleImg{
-  width:min(900px, 100%);
-  height:auto;
-  max-height: none;
+  width: 900px;
+  height: 180px;
+  max-width: 100%;
   object-fit:contain;
   margin-top:2px;
+  position: relative;
+  z-index: 12;
+  transform: scale(var(--title-scale, 1));
+  transform-origin: center;
 }
 .heroTitle--sr{
   position:absolute;
@@ -121,6 +174,10 @@
   justify-content:space-between;
   gap: var(--s-4);
   margin-bottom: var(--s-4);
+}
+.sectionHeader--center{
+  justify-content:center;
+  text-align:center;
 }
 .sectionDesc{max-width:70ch}
 
@@ -208,36 +265,47 @@
   overflow:hidden;
   min-height: 220px;
   background-color:#000000;
-  transition: transform 500ms var(--ease), box-shadow 500ms var(--ease), background-image 500ms var(--ease);
+  transition: transform 500ms var(--ease), box-shadow 500ms var(--ease);
   transform-origin:center;
 }
-.gameCard::after{
-  content:"";
-  position:absolute; inset:0;
-  background-image: var(--card-image, none);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: brightness(0.75);
-  transition: filter 500ms var(--ease);
+.gameCardBgWrap{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  overflow:hidden;
+}
+.gameCardBg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position: var(--card-bg-x, 50%) var(--card-bg-y, 50%);
+  filter: contrast(var(--card-contrast, 1)) saturate(var(--card-saturation, 1)) brightness(var(--card-brightness, 0.75));
+  opacity: var(--card-opacity, 1);
+  transition: filter 500ms var(--ease), transform 500ms var(--ease);
   z-index:0;
 }
-.gameCard::before{
-  content:"";
-  position:absolute; inset:0;
+.gameCardBgOverlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
   background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.4) 55%, rgba(0,0,0,1));
   opacity: 1;
   transition: opacity 500ms var(--ease);
-  pointer-events:none;
-  z-index:1;
 }
 .gameCard:hover{
   transform: scale(1.02);
   box-shadow: 0 18px 48px rgba(0,0,0,0.65);
 }
-.gameCard:hover::after{
-  filter: brightness(0.95);
+.gameCard:hover .gameCardBg{
+  filter: contrast(var(--card-contrast, 1))
+    saturate(var(--card-saturation, 1))
+    brightness(calc(var(--card-brightness, 0.75) * 1.25));
 }
+.gameCard:hover .gameCardBgOverlay{opacity:0.85}
 .gameCard:hover::before{
   opacity: 0.85;
 }
@@ -259,10 +327,12 @@
   display:flex;
   justify-content:center;
   align-items:center;
+  height: 140px;
 }
 .gameCardTitleImg{
-  width:min(100%, 640px);
+  width:420px;
   height:140px;
+  max-width: 100%;
   display:block;
   margin:0 auto;
   object-fit:contain;
@@ -270,9 +340,10 @@
   opacity:1;
   transition: transform 500ms var(--ease);
   transform-origin:center;
+  transform: scale(var(--title-scale, 1));
 }
 .gameCard:hover .gameCardTitleImg{
-  transform: scale(1.05);
+  transform: scale(calc(var(--title-scale, 1) * 1.05));
 }
 .srOnly{
   position:absolute;
@@ -450,9 +521,33 @@
   border:1px solid var(--c-border);
   padding: 8px 12px;
   border-radius: 999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 }
 .footerLinks a:hover{background: var(--c-panel-2); color: var(--c-fg); border-color: var(--c-border-strong)}
 .footerSmall{color: var(--c-dim); font-size: 12px}
+.footerSocialIcon{
+  width: 18px;
+  height: 18px;
+  display:block;
+}
+
+@media (prefers-reduced-motion: no-preference){
+  ::view-transition-old(root){
+    animation: none;
+    opacity: 0;
+  }
+  ::view-transition-new(root){
+    animation: none;
+    opacity: 1;
+  }
+  ::view-transition-old(*),
+  ::view-transition-new(*){
+    animation-duration: 320ms;
+    animation-timing-function: cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+}
 
 /* Dialog modal */
 dialog{

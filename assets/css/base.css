@@ -1,14 +1,30 @@
 /* Base reset + layout */
 *{box-sizing:border-box}
 html,body{height:100%}
+html{
+  scrollbar-gutter: stable;
+  overflow: hidden;
+}
 body{
   margin:0;
+  overflow: hidden;
   background:var(--c-bg);
   color:var(--c-fg);
   font-family:var(--font-sans);
   -webkit-font-smoothing:antialiased;
   text-rendering:geometricPrecision;
+}
+#page-root{
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding-bottom: var(--footer-h);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#page-root::-webkit-scrollbar{
+  width: 0;
+  height: 0;
 }
 
 img,svg,video{max-width:100%;display:block}

@@ -9,57 +9,71 @@
   <link rel="icon" href="assets/img/brand/favicon.png" type="image/png" />
   <link rel="manifest" href="site.webmanifest" />
 
+  <link rel="preload" href="assets/css/tokens.css" as="style" />
+  <link rel="preload" href="assets/css/base.css" as="style" />
+  <link rel="preload" href="assets/css/ui.css" as="style" />
+  <link rel="preload" href="assets/css/pages/home.css" as="style" />
+  <link rel="preload" href="assets/img/placeholders/banner.jpg" as="image" />
+  <link rel="preload" href="assets/img/placeholders/title.png" as="image" />
+
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/ui.css" />
   <link rel="stylesheet" href="assets/css/pages/home.css" />
 </head>
-<body data-root="">
+<body data-root="" data-page="home">
 
 
-<main>
-  <section class="hero" style="--hero-bg-image: url('assets/img/placeholders/banner.jpg')">
-    <div class="container heroInner">
-      <img class="heroTitleImg" src="assets/img/placeholders/title.png" alt="PATHWORKS" />
-      <h1 class="heroTitle heroTitle--sr">PATHWORKS</h1>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="sectionHeader sectionHeader--center">
-        <h2>Our Games</h2>
+<div id="page-root">
+  <main>
+    <section class="hero">
+      <div class="heroBgWrap" data-transition-id="home-hero-banner">
+        <img class="heroBgImg" id="homeHeroBg" src="assets/img/placeholders/banner.jpg" alt="" aria-hidden="true" data-morph-skip="1" />
+        <div class="heroBgOverlay" aria-hidden="true"></div>
       </div>
+      <div class="container heroInner">
+        <img class="heroTitleImg" src="assets/img/placeholders/title.png" alt="PATHWORKS" />
+        <h1 class="heroTitle heroTitle--sr">PATHWORKS</h1>
+      </div>
+    </section>
 
-      <div id="fatalError" class="mono" style="margin-top: var(--s-4); color: rgba(255,255,255,0.75)"></div>
-
-      <div id="gamesEmpty" class="card hidden" style="margin-top: var(--s-5)">
-        <div class="cardInner">
-          <div class="cardTitle">No games available yet.</div>
-          <div class="cardSub" style="margin-top:6px">Add a game to populate this list.</div>
+    <section class="section">
+      <div class="container">
+        <div class="sectionHeader sectionHeader--center">
+          <h2>Our Games</h2>
         </div>
+
+        <div id="fatalError" class="mono" style="margin-top: var(--s-4); color: rgba(255,255,255,0.75)"></div>
+
+        <div id="gamesEmpty" class="card hidden" style="margin-top: var(--s-5)">
+          <div class="cardInner">
+            <div class="cardTitle">No games available yet.</div>
+            <div class="cardSub" style="margin-top:6px">Add a game to populate this list.</div>
+          </div>
+        </div>
+
+        <div id="gamesGrid" class="grid gamesList" style="margin-top: var(--s-5)"></div>
+
       </div>
+    </section>
+  </main>
 
-      <div id="gamesGrid" class="grid gamesList" style="margin-top: var(--s-5)"></div>
-
+  <dialog id="mediaDialog" aria-label="Media viewer">
+    <div class="modalHeader">
+      <div id="mediaDialogTitle" class="mono">Media</div>
+      <button id="mediaDialogClose" class="btn btn--sm modalClose" type="button">Close</button>
     </div>
-  </section>
-</main>
-
-<dialog id="mediaDialog" aria-label="Media viewer">
-  <div class="modalHeader">
-    <div id="mediaDialogTitle" class="mono">Media</div>
-    <button id="mediaDialogClose" class="btn btn--sm modalClose" type="button">Close</button>
-  </div>
-  <div class="modalBody">
-    <div class="modalMedia">
-      <img id="mediaDialogImg" alt="" />
+    <div class="modalBody">
+      <div class="modalMedia">
+        <img id="mediaDialogImg" alt="" />
+      </div>
     </div>
-  </div>
-</dialog>
+  </dialog>
+</div>
 
 
-<script type="module" src="assets/js/pages/home.js"></script>
+<script type="module" src="assets/js/app.js"></script>
+<script type="module" src="assets/js/sw-register.js"></script>
 <div id="footer-root"></div>
 <script type="module" src="assets/js/footer.js"></script>
 </body>

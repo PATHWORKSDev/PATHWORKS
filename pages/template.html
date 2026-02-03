@@ -7,36 +7,44 @@
   <title>PATHWORKS — Library</title>
 
   <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png" />
+  <link rel="preload" href="../assets/css/tokens.css" as="style" />
+  <link rel="preload" href="../assets/css/base.css" as="style" />
+  <link rel="preload" href="../assets/css/ui.css" as="style" />
   <link rel="stylesheet" href="../assets/css/tokens.css" />
   <link rel="stylesheet" href="../assets/css/base.css" />
   <link rel="stylesheet" href="../assets/css/ui.css" />
 
 </head>
 
-<body data-root="../">
+<body data-root="../" data-page="template">
 
 
-<main>
-  <section class="hero" style="--hero-bg-image: url('../assets/img/placeholders/banner.svg')">
-    <div class="container heroInner">
-      <div class="kicker">Library</div>
-      <h1 class="heroTitle">UI kit + templates</h1>
-      <p class="heroSub">
-        This page is the living reference for your site: components, examples, and conventions. Duplicate this file to create new pages.
-      </p>
-      <div class="heroMetaRow">
-        <span class="chip">Buttons</span>
-        <span class="chip">Cards</span>
-        <span class="chip">Scroll rails</span>
-        <span class="chip">Tabs</span>
-        <span class="chip">Accordions</span>
-        <span class="chip">Modals</span>
+<div id="page-root">
+  <main>
+    <section class="hero">
+      <div class="heroBgWrap">
+        <img class="heroBgImg" src="../assets/img/placeholders/banner.svg" alt="" aria-hidden="true" data-morph-skip="1" />
+        <div class="heroBgOverlay" aria-hidden="true"></div>
       </div>
-    </div>
-  </section>
+      <div class="container heroInner">
+        <div class="kicker">Library</div>
+        <h1 class="heroTitle">UI kit + templates</h1>
+        <p class="heroSub">
+          This page is the living reference for your site: components, examples, and conventions. Duplicate this file to create new pages.
+        </p>
+        <div class="heroMetaRow">
+          <span class="chip">Buttons</span>
+          <span class="chip">Cards</span>
+          <span class="chip">Scroll rails</span>
+          <span class="chip">Tabs</span>
+          <span class="chip">Accordions</span>
+          <span class="chip">Modals</span>
+        </div>
+      </div>
+    </section>
 
-  <section class="section">
-    <div class="container">
+    <section class="section">
+      <div class="container">
 
       <h2 id="components">Components</h2>
       <p>Everything here is monochrome and dark-mode only. Use <code>assets/css/ui.css</code> as the single source of truth.</p>
@@ -69,7 +77,11 @@
           </div>
         </div>
 
-        <a class="card gameCard" href="game.html?id=paradox" style="--card-image: url('../assets/img/placeholders/banner.svg')">
+        <a class="card gameCard" href="game.html?id=paradox">
+          <div class="gameCardBgWrap">
+            <img class="gameCardBg" src="../assets/img/placeholders/banner.svg" alt="" aria-hidden="true" data-morph-skip="1" />
+            <div class="gameCardBgOverlay" aria-hidden="true"></div>
+          </div>
           <div class="gameCardBody">
             <div>
               <div class="gameCardTitle">Game card</div>
@@ -210,34 +222,24 @@
       </div>
 
     </div>
-  </section>
-</main>
+    </section>
+  </main>
 
-<dialog id="mediaDialog" aria-label="Media viewer">
-  <div class="modalHeader">
-    <div id="mediaDialogTitle" class="mono">Media</div>
-    <button id="mediaDialogClose" class="btn btn--sm modalClose" type="button">Close</button>
-  </div>
-  <div class="modalBody">
-    <div class="modalMedia">
-      <img id="mediaDialogImg" alt="" />
+  <dialog id="mediaDialog" aria-label="Media viewer">
+    <div class="modalHeader">
+      <div id="mediaDialogTitle" class="mono">Media</div>
+      <button id="mediaDialogClose" class="btn btn--sm modalClose" type="button">Close</button>
     </div>
-  </div>
-</dialog>
+    <div class="modalBody">
+      <div class="modalMedia">
+        <img id="mediaDialogImg" alt="" />
+      </div>
+    </div>
+  </dialog>
+</div>
 
-
-<script type="module">
-  import { initUi } from "../assets/js/ui.js";
-  initUi();
-
-  const btns = Array.from(document.querySelectorAll(".tabBtn"));
-  const panels = Array.from(document.querySelectorAll(".tabPanel"));
-  const set = (name) => {
-    for (const b of btns) b.setAttribute("aria-selected", b.dataset.tab === name ? "true" : "false");
-    for (const p of panels) p.classList.toggle("hidden", p.dataset.panel !== name);
-  };
-  for (const b of btns) b.addEventListener("click", () => set(b.dataset.tab));
-</script>
+<script type="module" src="../assets/js/app.js"></script>
+<script type="module" src="../assets/js/sw-register.js"></script>
 <div id="footer-root"></div>
 <script type="module" src="../assets/js/footer.js"></script>
 </body>

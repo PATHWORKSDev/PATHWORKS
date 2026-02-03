@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>PATHWORKS - Game</title>
+
+  <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png" />
+  <link rel="preload" href="../assets/css/tokens.css" as="style" />
+  <link rel="preload" href="../assets/css/base.css" as="style" />
+  <link rel="preload" href="../assets/css/ui.css" as="style" />
+  <link rel="preload" href="../assets/css/pages/game.css" as="style" />
+  <link rel="preload" href="../assets/img/placeholders/banner.jpg" as="image" />
+  <link rel="preload" href="../assets/img/placeholders/title.png" as="image" />
+  <link rel="stylesheet" href="../assets/css/tokens.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/ui.css" />
+  <link rel="stylesheet" href="../assets/css/pages/game.css" />
+
+</head>
+
+<body data-root="../" data-page="game">
+
+
+<div id="page-root">
+  <main>
+    <section class="hero">
+      <div class="heroBgWrap">
+        <img class="heroBgImg" id="gameHeroBg" src="../assets/img/placeholders/banner.jpg" alt="" aria-hidden="true" data-morph-skip="1" />
+        <div class="heroBgOverlay" aria-hidden="true"></div>
+      </div>
+      <div class="container heroInner">
+        <img id="gameTitleImg" class="heroTitleImg" src="../assets/img/placeholders/title.png" alt="" />
+        <h1 id="gameTitle" class="heroTitle heroTitle--sr">Loading…</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div id="fatalError" class="mono" style="margin-bottom: var(--s-4); color: rgba(255,255,255,0.75)"></div>
+        <div id="gameBodyContainer"></div>
+
+      </div>
+    </section>
+  </main>
+
+  <dialog id="mediaDialog" aria-label="Media viewer">
+    <div class="modalHeader">
+      <div id="mediaDialogTitle" class="mono">Media</div>
+      <button id="mediaDialogClose" class="btn btn--sm modalClose" type="button">Close</button>
+    </div>
+    <div class="modalBody">
+      <div class="modalMedia">
+        <img id="mediaDialogImg" alt="" />
+      </div>
+    </div>
+  </dialog>
+
+  <div class="pageDock">
+    <a id="returnHomeBtn" class="dockBtn" href="../index.html">Return to home</a>
+    <button id="backTopBtn" class="dockBtn dockBtn--ghost" type="button" aria-hidden="true">Back to top</button>
+  </div>
+</div>
+
+<script type="module" src="../assets/js/app.js"></script>
+<script type="module" src="../assets/js/sw-register.js"></script>
+<div id="footer-root"></div>
+<script type="module" src="../assets/js/footer.js"></script>
+</body>
+</html>

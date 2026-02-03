@@ -7,44 +7,51 @@
   <title>PATHWORKS - Page Not Found</title>
 
   <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png" />
+  <link rel="preload" href="../assets/css/tokens.css" as="style" />
+  <link rel="preload" href="../assets/css/base.css" as="style" />
+  <link rel="preload" href="../assets/css/ui.css" as="style" />
   <link rel="stylesheet" href="../assets/css/tokens.css" />
   <link rel="stylesheet" href="../assets/css/base.css" />
   <link rel="stylesheet" href="../assets/css/ui.css" />
 
 </head>
 
-<body data-root="../">
+<body data-root="../" data-page="404">
 
-<main>
-  <section class="hero" style="--hero-bg-image: url('../assets/img/placeholders/banner.svg')">
-    <div class="container heroInner">
-      <div class="kicker">404</div>
-      <h1 class="heroTitle">Page not found</h1>
-      <p class="heroSub">The page you're looking for doesn't exist.</p>
-      <div class="heroMetaRow">
-        <a class="btn btn--primary" href="../index.html">Back home</a>
-        <a class="btn" href="template.html">Library</a>
+<div id="page-root">
+  <main>
+    <section class="hero">
+      <div class="heroBgWrap">
+        <img class="heroBgImg" src="../assets/img/placeholders/banner.svg" alt="" aria-hidden="true" data-morph-skip="1" />
+        <div class="heroBgOverlay" aria-hidden="true"></div>
+      </div>
+      <div class="container heroInner">
+        <div class="kicker">404</div>
+        <h1 class="heroTitle">Page not found</h1>
+        <p class="heroSub">The page you're looking for doesn't exist.</p>
+        <div class="heroMetaRow">
+          <a class="btn btn--primary" href="../index.html">Back home</a>
+          <a class="btn" href="template.html">Library</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="mediaDialog" aria-label="Media viewer">
+    <div class="modalHeader">
+      <div id="mediaDialogTitle" class="mono">Media</div>
+      <button id="mediaDialogClose" class="btn btn--sm modalClose" type="button">Close</button>
+    </div>
+    <div class="modalBody">
+      <div class="modalMedia">
+        <img id="mediaDialogImg" alt="" />
       </div>
     </div>
-  </section>
-</main>
+  </dialog>
+</div>
 
-<dialog id="mediaDialog" aria-label="Media viewer">
-  <div class="modalHeader">
-    <div id="mediaDialogTitle" class="mono">Media</div>
-    <button id="mediaDialogClose" class="btn btn--sm modalClose" type="button">Close</button>
-  </div>
-  <div class="modalBody">
-    <div class="modalMedia">
-      <img id="mediaDialogImg" alt="" />
-    </div>
-  </div>
-</dialog>
-
-<script type="module">
-  import { initUi } from "../assets/js/ui.js";
-  initUi();
-</script>
+<script type="module" src="../assets/js/app.js"></script>
+<script type="module" src="../assets/js/sw-register.js"></script>
 <div id="footer-root"></div>
 <script type="module" src="../assets/js/footer.js"></script>
 </body>

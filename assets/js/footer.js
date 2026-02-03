@@ -17,7 +17,9 @@ footerRoot.innerHTML = `
 
     <div>
       <div class="footerLinks">
-        <a href="https://discord.gg/vKN6ArbrEk" target="_blank" rel="noreferrer">Discord</a>
+        <a href="https://discord.gg/vKN6ArbrEk" target="_blank" rel="noreferrer" aria-label="Discord">
+          <img class="footerSocialIcon" src="${root}assets/img/icons/discord.png" alt="Discord">
+        </a>
       </div>
     </div>
   </div>

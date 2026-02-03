@@ -2,36 +2,61 @@
   {
     "id": "inbetween",
     "title": "INBETWEEN",
-    "oneLiner": "Liminal exploration with something following you.",
-    "status": "Prototype",
-    "release": "TBA",
-    "platforms": [
-      "Roblox"
-    ],
-    "genres": [
-      "Horror",
-      "Exploration"
-    ],
-    "description": "INBETWEEN is focused on atmosphere, readable spaces, and tight pacing. Replace this placeholder with your own description, feature bullets, and gallery images.",
-    "links": [
-      {
-        "label": "Roblox",
-        "href": "#"
-      }
-    ],
-    "media": [
-      {
-        "src": "assets/img/placeholders/square.svg",
-        "alt": "Render 1"
+    "modifiers": {
+      "titleScale": 1.15,
+      "offset": {
+        "hero": { "x": 50, "y": 45 },
+        "card": { "x": 50, "y": 60 }
       },
-      {
-        "src": "assets/img/placeholders/square.svg",
-        "alt": "Render 2"
+      "filters": {
+        "hero": { "contrast": 1.5, "saturation": 1.05, "brightness": 1.25, "opacity": 1 },
+        "card": { "contrast": 1.25, "saturation": 1, "brightness": 0.9, "opacity": 1 }
+      }       
+    }
+  },
+  {
+    "id": "paradox",
+    "title": "PARADOX",
+    "modifiers": {
+      "titleScale": 2.25,
+      "offset": {
+        "hero": { "x": 50, "y": 70 },
+        "card": { "x": 50, "y": 60 }
       },
-      {
-        "src": "assets/img/placeholders/square.svg",
-        "alt": "Render 3"
-      }
-    ]
+      "filters": {
+        "hero": { "contrast": 1, "saturation": 1.25, "brightness": 2.25, "opacity": 1 },
+        "card": { "contrast": 1, "saturation": 1, "brightness": 2, "opacity": 1 }
+      }      
+    }
+  },
+  {
+    "id": "sane",
+    "title": "SANE",
+    "modifiers": {
+      "titleScale": 1,
+      "offset": {
+        "hero": { "x": 52, "y": 59 },
+        "card": { "x": 50, "y": 60 }
+      },
+      "filters": {
+        "hero": { "contrast": 1.1, "saturation": 1.05, "brightness": 1.25, "opacity": 1 },
+        "card": { "contrast": 1, "saturation": 1, "brightness": 1.25, "opacity": 1 }
+      }      
+    }
+  },
+  {
+    "id": "insurance",
+    "title": "INSURANCE FRAUD SIMULATOR",
+    "modifiers": {
+      "titleScale": 1.75,
+      "offset": {
+        "hero": { "x": 50, "y": 60 },
+        "card": { "x": 50, "y": 60 }
+      },
+      "filters": {
+        "hero": { "contrast": 1, "saturation": 1, "brightness": 1, "opacity": 1 },
+        "card": { "contrast": 1, "saturation": 1, "brightness": 1, "opacity": 1 }
+      }      
+    }
   }
 ]
